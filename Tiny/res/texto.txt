@@ -1,0 +1,14 @@
+> Si uso el setText otra vez, esto va a borrar y reemplazar lo anterior!
+> Por eso para agregar texto uso el appendText()!Para no tener que andar poniendo saltos de linea manualmente, utilizo el metodo addLine!
+Lunes
+Martes
+Miercoles
+Jueves
+Viernes
+Sabado
+Domingo
+Lunes
+Verano
+Otoño
+Invierno
+Verano

@@ -20,14 +20,13 @@ public class AlumnoRepository implements I_AlumnoRepository {
     public void save(Alumno alumno) {
         if(alumno==null) return;
         
-        String query = "INSERT INTO alumnos(nombre, apellido, edad, curso) VALUES (?,?,?,?)";
+        String query = "INSERT INTO alumnos(nombre, apellido, edad) VALUES (?,?,?)";
         
         try (PreparedStatement ps = conn.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)){
             
             ps.setString(1, alumno.getNombre());
             ps.setString(2, alumno.getApellido());
             ps.setInt(3, alumno.getEdad());
-            ps.setInt(4, alumno.getCurso());
             
             ps.execute();
             
@@ -65,8 +64,7 @@ public class AlumnoRepository implements I_AlumnoRepository {
                         rs.getInt("id"),
                         rs.getString("nombre"),
                         rs.getString("apellido"),
-                        rs.getInt("edad"),
-                        rs.getInt("curso")
+                        rs.getInt("edad")
                 ));
             }
         } catch (Exception e) {
@@ -85,8 +83,7 @@ public class AlumnoRepository implements I_AlumnoRepository {
                         rs.getInt("id"),
                         rs.getString("nombre"),
                         rs.getString("Apellido"),
-                        rs.getInt("edad"),
-                        rs.getInt("curso")
+                        rs.getInt("edad")
                 ));
             }            
         } catch (Exception e) {

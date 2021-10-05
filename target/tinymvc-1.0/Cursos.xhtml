@@ -7,79 +7,84 @@
     <h:head>
         <title>TinyClass | Cursos</title>
         <link rel="stylesheet" href="css/style.css"/>
+
     </h:head>
     <h:body>
-        <h1>Formulario de Cursos</h1>
-        <h:form>
-            <p:panelGrid columns="2">
-                <p:outputLabel value="Titulo: " />
-                <p:inputText value="#{cursoMB.curso.titulo}"/>
-                <p:outputLabel value="Profesor: " />
-                <p:inputText value="#{cursoMB.curso.profesor}"/>
-                <p:outputLabel value="Dia: "/>
-                <p:selectOneMenu value="#{cursoMB.curso.dia}">
-                    <f:selectItems value="#{diaMB.dia}"/>
-                    <f:facet name="footer">
-                        <p:divider styleClass="p-mt-0" />
-                        <h:outputText value="Seleccione el dia" style="font-weight:bold;"/>
-                    </f:facet>
-                </p:selectOneMenu>
-                <p:outputLabel value="Turno: "/>
-                <p:selectOneMenu value="#{cursoMB.curso.turno}">
-                    <f:selectItems value="#{turnoMB.turno}"/>
-                    <f:facet name="footer">
-                        <p:divider styleClass="p-mt-0" />
-                        <h:outputText value="Seleccione el turno" style="font-weight:bold;"/>
-                    </f:facet>
-                </p:selectOneMenu>
-                <p:commandButton value="Guardar" action="#{cursoMB.save()}" ajax="false"/>
-                <p:growl id="nube" showDetail="true" />
-            </p:panelGrid>
-        </h:form>
+        <nav>
+            <ul>
+                <li><a href="/tinymvc/faces/index.xhtml">Inicio</a></li>
+                <li><a href="/tinymvc/faces/Cursos.xhtml">Cursos</a></li>
+                <li><a href="/tinymvc/faces/Alumnos.xhtml">Alumnos</a></li>
+            </ul>
+        </nav>
+        <div class="main-wrapper">
+            <div class="section-wrapper">
+                <h1>Cargar un Curso</h1>
+                <h:form>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Titulo: " />
+                        <p:inputText value="#{cursoMB.curso.titulo}"/>
+                        <p:outputLabel value="Profesor: " />
+                        <p:inputText value="#{cursoMB.curso.profesor}"/>
+                        <p:outputLabel value="Dia: "/>
+                        <p:selectOneMenu value="#{cursoMB.curso.dia}">
+                            <f:selectItems value="#{diaMB.dia}"/>
+                            <f:facet name="footer">
+                                <p:divider styleClass="p-mt-0" />
+                                <h:outputText value="Seleccione el dia" style="font-weight:bold;"/>
+                            </f:facet>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Turno: "/>
+                        <p:selectOneMenu value="#{cursoMB.curso.turno}">
+                            <f:selectItems value="#{turnoMB.turno}"/>
+                            <f:facet name="footer">
+                                <p:divider styleClass="p-mt-0" />
+                                <h:outputText value="Seleccione el turno" style="font-weight:bold;"/>
+                            </f:facet>
+                        </p:selectOneMenu>
+                        <p:commandButton value="Guardar" action="#{cursoMB.save()}" ajax="false"/>
+                        <p:growl id="nube" showDetail="true" />
+                    </p:panelGrid>
+                </h:form>
+            </div>
 
-        <h:form>
-            <p:outputLabel value="Buscar Curso por titulo: "/>
-            <p:inputText value="#{cursoMB.buscarTitulo}" />
-        </h:form>
+            <div class="section-wrapper">
+                <h1>Cursos disponibles</h1>
+                <div class="search-form">
+                    <h:form>
+                        <p:outputLabel value="Buscar Curso por titulo: "/>
+                        <p:inputText value="#{cursoMB.buscarTitulo}" />
+                    </h:form>
+                </div>
 
-        <div class="results-wrapper">
-            <h:form>
-                <p:dataTable var="cur" value="#{cursoMB.likeTitulo}" rows="10"
-                             paginator="true"
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                             currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
-                             rowsPerPageTemplate="5,10,{ShowAll|'Todos'}">
+                <h:form>
+                    <div class="card">
+                        <p:dataTable var="cur" value="#{cursoMB.likeTitulo}">
+                            <p:column headerText="Titulo">
+                                <h:outputText value="#{cur.titulo}" />
+                            </p:column>
 
-                    <p:column headerText="Titulo">
-                        <h:outputText value="#{cur.titulo}" />
-                    </p:column>
+                            <p:column headerText="Profesor">
+                                <h:outputText value="#{cur.profesor}" />
+                            </p:column>
 
-                    <p:column headerText="Profesor">
-                        <h:outputText value="#{cur.profesor}" />
-                    </p:column>
+                            <p:column headerText="Dia">
+                                <h:outputText value="#{cur.dia}" />
+                            </p:column>
 
-                    <p:column headerText="Dia">
-                        <h:outputText value="#{cur.dia}" />
-                    </p:column>
+                            <p:column headerText="Turno">
+                                <h:outputText value="#{cur.turno}" />
+                            </p:column>
 
-                    <p:column headerText="Turno">
-                        <h:outputText value="#{cur.turno}" />
-                    </p:column>
-
-                    <p:column headerText="Acciones">
-                        <h:commandButton action = "#{cursoMB.remove(cur.id)}" value="Borrar" class="btn btn-danger" /> 
-                    </p:column>
-                </p:dataTable>
-            </h:form>
+                            <p:column headerText="Acciones">
+                                <h:commandButton action = "#{cursoMB.remove(cur.id)}" value="Borrar" class="btn btn-danger" /> 
+                            </p:column>
+                            
+                        </p:dataTable>
+                    </div>
+                </h:form>
+            </div>
         </div>
-
-
-        <h:form>
-            <p:dock position="bottom">
-                <p:menuitem value="Cursos" icon="/img/cursosicon.png" outcome="/faces/Cursos.xhtml" />
-                <p:menuitem value="Alumnos" icon="/img/alumnoicon.jpg" outcome="/faces/Alumnos.xhtml"/>
-            </p:dock>
-        </h:form>
     </h:body>
 </html>
 

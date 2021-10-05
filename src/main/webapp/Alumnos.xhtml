@@ -6,71 +6,65 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Tinyclass | Alumnos</title>
-        
+        <link rel="stylesheet" href="css/style.css"/>
     </h:head>
     <h:body>
-        <h1>Formulario de Alumnos</h1>
-        <h:form>
-            <p:panelGrid columns="2">
-                <p:outputLabel value="Nombre " />
-                <p:inputText value="#{alumnoMB.alumno.nombre}"/>
-                <p:outputLabel value="Apellido " />
-                <p:inputText value="#{alumnoMB.alumno.apellido}"/>
-                <p:outputLabel value="Edad: "/>
-                <p:inputNumber value="#{alumnoMB.alumno.edad}" />
-                <p:outputLabel value="Curso: "/>
-                <p:selectOneMenu value="#{alumnoMB.alumno.curso}">
-                    <f:selectItems value="a"/>
-                    <f:facet name="footer">
-                        <p:divider styleClass="p-mt-0" />
-                        <h:outputText value="Seleccione el curso" style="font-weight:bold;"/>
-                    </f:facet>
-                </p:selectOneMenu>
-                <p:commandButton value="Guardar" action="#{alumnoMB.save()}" ajax="false"/>
-                <p:growl id="nube" showDetail="true" />
-            </p:panelGrid>
-        </h:form>
-        
-        <h:form>
-            <p:outputLabel value="Buscar por apellido: "/>
-            <p:inputText value="#{alumnoMB.buscarApellido}" />
-        </h:form>
-        
-        <h:form>
-            <p:dataTable var="ar" value="#{alumnoMB.likeApellido}" rows="10"
-            paginator="true"
-            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-            currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
-            rowsPerPageTemplate="5,10,{ShowAll|'Todos'}">
+        <nav>
+            <ul>
+                <li><a href="/tinymvc/faces/index.xhtml">Inicio</a></li>
+                <li><a href="/tinymvc/faces/Cursos.xhtml">Cursos</a></li>
+                <li><a href="/tinymvc/faces/Alumnos.xhtml">Alumnos</a></li>
+            </ul>
+        </nav>
+        <div class="main-wrapper">
+            <div class="section-wrapper">
+                <h1>Formulario de Alumnos</h1>
+                <h:form>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Nombre: " />
+                        <p:inputText value="#{alumnoMB.alumno.nombre}"/>
+                        <p:outputLabel value="Apellido: " />
+                        <p:inputText value="#{alumnoMB.alumno.apellido}"/>
+                        <p:outputLabel value="DNI: "/>
+                        <p:inputNumber value="#{alumnoMB.alumno.edad}" />
+                        <p:commandButton value="Guardar" action="#{alumnoMB.save()}" ajax="false"/>
+                        <p:growl id="nube" showDetail="true" />
+                    </p:panelGrid>
+                </h:form>
+            </div>
 
-                <p:column headerText="Apellido">
-                    <h:outputText value="#{ar.apellido}" />
-                </p:column>
+            <div class="section-wrapper">
+                <h1>Alumnos ingresados</h1>
+                <div class="search-form">
+                    <h:form>
+                        <p:outputLabel value="Buscar por apellido: "/>
+                        <p:inputText value="#{alumnoMB.buscarApellido}" />
+                    </h:form>
+                </div>
 
-                <p:column headerText="Nombre">
-                    <h:outputText value="#{ar.nombre}" />
-                </p:column>
+                <h:form>
+                    <div class="card">
+                        <p:dataTable var="ar" value="#{alumnoMB.likeApellido}">
+                            <p:column headerText="Apellido">
+                                <h:outputText value="#{ar.apellido}" />
+                            </p:column>
 
-                <p:column headerText="Edad">
-                    <h:outputText value="#{ar.edad}" />
-                </p:column>
+                            <p:column headerText="Nombre">
+                                <h:outputText value="#{ar.nombre}" />
+                            </p:column>
 
-                <p:column headerText="Curso">
-                    <h:outputText value="#{ar.curso}" />
-                </p:column>
-                
-                <p:column headerText="Acciones">
-                    <h:commandButton action = "#{alumnoMB.remove(ar.id)}" value="Borrar" class="btn btn-danger" /> 
-                </p:column>
-            </p:dataTable>
-        </h:form>
-        
-        <h:form>
-            <p:dock position="bottom">
-                <p:menuitem value="Cursos" icon="/img/cursosicon.png" outcome="/faces/Cursos.xhtml" />
-                <p:menuitem value="Alumnos" icon="/img/alumnoicon.jpg" outcome="/faces/Alumnos.xhtml"/>
-            </p:dock>
-        </h:form>        
+                            <p:column headerText="DNI">
+                                <h:outputText value="#{ar.edad}" />
+                            </p:column>
+
+                            <p:column headerText="Acciones">
+                                <h:commandButton action = "#{alumnoMB.remove(ar.id)}" value="Borrar" class="btn btn-danger" /> 
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </h:form>
+            </div>
+        </div>
     </h:body>
 </html>
 

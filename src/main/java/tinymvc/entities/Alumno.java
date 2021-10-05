@@ -3,7 +3,7 @@ public class Alumno {
     private int id;
     private String nombre;
     private String apellido;
-    private int edad;
+    private int dni;
     
     private int curso; // Foreign Key
     
@@ -11,19 +11,17 @@ public class Alumno {
         
     }
 
-    public Alumno(int id, String nombre, String apellido, int edad, int curso) {
+    public Alumno(int id, String nombre, String apellido, int dni) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.edad = edad;
-        this.curso = curso;
+        this.dni = dni;
     }
 
-    public Alumno(String nombre, String apellido, int edad, int curso) {
+    public Alumno(String nombre, String apellido, int edad) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.edad = edad;
-        this.curso = curso;
+        this.dni = edad;
     }
 
     public int getId() {
@@ -51,24 +49,16 @@ public class Alumno {
     }
 
     public int getEdad() {
-        return edad;
+        return dni;
     }
 
     public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public int getCurso() {
-        return curso;
-    }
-
-    public void setCurso(int curso) {
-        this.curso = curso;
+        this.dni = edad;
     }
 
     @Override
     public String toString() {
-        return "Alumno{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", curso=" + curso + '}';
+        return "Alumno{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + dni + ", curso=" + curso + '}';
     }   
     
 }

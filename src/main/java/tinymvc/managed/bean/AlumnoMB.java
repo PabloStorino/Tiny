@@ -25,8 +25,8 @@ public class AlumnoMB implements Serializable{
             || alumno.getApellido().isEmpty() || alumno.getApellido() == null)
             {
                 addMessage(FacesMessage.SEVERITY_ERROR, "Error en la carga.", "Rellene todos los campos.");
-            }else if(alumno.getCurso() <= 0){
-                addMessage(FacesMessage.SEVERITY_ERROR, "Error en la carga.", "Se necesita ingresar un curso.");
+            }else if(alumno.getNombre().contains("<") || alumno.getNombre().contains(">") || alumno.getApellido().contains("'") || alumno.getApellido().contains(">") || alumno.getApellido().contains("<") || alumno.getApellido().contains("'")){
+                addMessage(FacesMessage.SEVERITY_ERROR, "Error en la carga.", "Caracteres invalidos.");
             }else{
                 ar.save(alumno);
                 mensaje = "Se cargo correctamente el alumno numero: "+alumno.getId();

@@ -26,6 +26,8 @@ public class CursoMB implements Serializable{
                 || curso.getTitulo() == null)
             {
             addMessage(FacesMessage.SEVERITY_ERROR, "Error en la carga.", "Rellene todos los campos.");
+            }else if(curso.getTitulo().contains("<") || curso.getTitulo().contains(">") ||curso.getTitulo().contains("'") || curso.getProfesor().contains(">") || curso.getProfesor().contains("<") || curso.getProfesor().contains("'")){
+                addMessage(FacesMessage.SEVERITY_ERROR, "Error en la carga.", "Caracteres invalidos.");
             }else{
                 cr.save(curso);
                 mensaje = "Se cargo correctamente el curso numero: "+curso.getId();

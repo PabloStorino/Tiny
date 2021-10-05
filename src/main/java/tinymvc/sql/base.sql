@@ -15,6 +15,4 @@ CREATE TABLE alumnos(
     nombre VARCHAR(25),
     apellido VARCHAR(25),
     edad INT
-    curso INT,
-    CONSTRAINT fk_alumno_curso FOREIGN KEY (curso) REFERENCES cursos(id)
 );

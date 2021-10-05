@@ -31,11 +31,4 @@ public interface I_AlumnoRepository {
             .filter(a -> a.getApellido().toLowerCase().contains(apellido.toLowerCase()))
             .collect(Collectors.toList());
     }
-    
-    default List<Alumno> getLikeCurso(int idCurso){
-    return getAll()
-            .stream()
-            .filter(a -> a.getCurso()==idCurso)
-            .collect(Collectors.toList());
-    }  
 }

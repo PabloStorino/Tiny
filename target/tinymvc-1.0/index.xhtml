@@ -5,15 +5,17 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>TinyClass | Inicio</title>
+        <link rel="stylesheet" href="css/style.css"/>
     </h:head>
     <h:body>
-        <h1>TinyClass</h1>
-        <h:form>
-            <p:dock position="bottom">
-                <p:menuitem value="Cursos" icon="/img/cursosicon.png" outcome="/faces/Cursos.xhtml" />
-                <p:menuitem value="Alumnos" icon="/img/alumnoicon.jpg" outcome="/faces/Alumnos.xhtml"/>
-            </p:dock>
-        </h:form>
+        <div class="index-wrapper">
+            <div class="index-img-wrapper">
+                <h:graphicImage class="imgindex" url="/img/cursosicon.png"/>
+            </div>
+            <h1>Bienvenido a TinyClass</h1>
+            <p>Una pequeña y rapida herramienta de organizado</p>
+            <a href="/tinymvc/faces/Cursos.xhtml"><button class="indexbutton">Ingresar</button></a>
+        </div>
     </h:body>
 </html>
 

@@ -14,5 +14,12 @@ CREATE TABLE alumnos(
     id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(25),
     apellido VARCHAR(25),
-    edad INT
+    DNI INT
+);
+
+CREATE TABLE profesores(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(25),
+    apellido VARCHAR(25),
+    DNI INT
 );

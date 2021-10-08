@@ -29,12 +29,12 @@ public class AlumnoMB implements Serializable{
                 addMessage(FacesMessage.SEVERITY_ERROR, "Error en la carga.", "Caracteres invalidos.");
             }else{
                 ar.save(alumno);
-                mensaje = "Se cargo correctamente el alumno numero: "+alumno.getId();
-                addMessage(FacesMessage.SEVERITY_INFO, "Carga exitosa.", "Se guardo el alumno: "+alumno.getId());
+                mensaje = "Se registro correctamente al alumno: "+alumno.getApellido();
+                addMessage(FacesMessage.SEVERITY_INFO, "Registro exitoso.", "Se cargo al alumno: "+alumno.getApellido());
                 alumno = new Alumno();
             }
         } catch (Exception e) {
-            addMessage(FacesMessage.SEVERITY_ERROR, "Error en la carga.", "No se pudo guardar el alumno.");
+            addMessage(FacesMessage.SEVERITY_ERROR, "Error en la carga.", "No se pudo registrar el alumno.");
             System.out.println("************************");
             System.out.println(e);
             System.out.println("************************");

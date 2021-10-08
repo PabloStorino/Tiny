@@ -14,11 +14,12 @@
                 <li><a href="/tinymvc/faces/index.xhtml">Inicio</a></li>
                 <li><a href="/tinymvc/faces/Cursos.xhtml">Cursos</a></li>
                 <li><a href="/tinymvc/faces/Alumnos.xhtml">Alumnos</a></li>
+                <li><a href="/tinymvc/faces/Profesores.xhtml">Profesores</a></li>
             </ul>
         </nav>
         <div class="main-wrapper">
             <div class="section-wrapper">
-                <h1>Formulario de Alumnos</h1>
+                <h1>Registro de alumnos</h1>
                 <h:form>
                     <p:panelGrid columns="2">
                         <p:outputLabel value="Nombre: " />
@@ -26,7 +27,7 @@
                         <p:outputLabel value="Apellido: " />
                         <p:inputText value="#{alumnoMB.alumno.apellido}"/>
                         <p:outputLabel value="DNI: "/>
-                        <p:inputNumber value="#{alumnoMB.alumno.edad}" />
+                        <p:inputNumber value="#{alumnoMB.alumno.DNI}" />
                         <p:commandButton value="Guardar" action="#{alumnoMB.save()}" ajax="false"/>
                         <p:growl id="nube" showDetail="true" />
                     </p:panelGrid>
@@ -34,7 +35,7 @@
             </div>
 
             <div class="section-wrapper">
-                <h1>Alumnos ingresados</h1>
+                <h1>Alumnos registrados</h1>
                 <div class="search-form">
                     <h:form>
                         <p:outputLabel value="Buscar por apellido: "/>
@@ -54,10 +55,10 @@
                             </p:column>
 
                             <p:column headerText="DNI">
-                                <h:outputText value="#{ar.edad}" />
+                                <h:outputText value="#{ar.DNI}" />
                             </p:column>
 
-                            <p:column headerText="Acciones">
+                            <p:column>
                                 <h:commandButton action = "#{alumnoMB.remove(ar.id)}" value="Borrar" class="btn btn-danger" /> 
                             </p:column>
                         </p:dataTable>

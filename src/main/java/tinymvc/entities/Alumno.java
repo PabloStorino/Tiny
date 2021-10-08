@@ -18,10 +18,10 @@ public class Alumno {
         this.dni = dni;
     }
 
-    public Alumno(String nombre, String apellido, int edad) {
+    public Alumno(String nombre, String apellido, int dni) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.dni = edad;
+        this.dni = dni;
     }
 
     public int getId() {
@@ -48,12 +48,12 @@ public class Alumno {
         this.apellido = apellido;
     }
 
-    public int getEdad() {
+    public int getDNI() {
         return dni;
     }
 
-    public void setEdad(int edad) {
-        this.dni = edad;
+    public void setDNI(int dni) {
+        this.dni = dni;
     }
 
     @Override

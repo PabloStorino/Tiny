@@ -26,7 +26,13 @@
                         <p:outputLabel value="Titulo: " />
                         <p:inputText value="#{cursoMB.curso.titulo}"/>
                         <p:outputLabel value="Profesor: " />
-                        <p:inputText value="#{cursoMB.curso.profesor}"/>
+                        <p:selectOneMenu value="#{cursoMB.curso.profesor}">
+                            <f:selectItems value="#{profesorMB.all}" var="c" itemLabel="#{c.apellido}" itemValue="#{c.apellido}"/>
+                            <f:facet name="footer">
+                                <p:divider styleClass="p-mt-0" />
+                                <h:outputText value="Seleccione el profesor" style="font-weight:bold;"/>
+                            </f:facet>
+                        </p:selectOneMenu>
                         <p:outputLabel value="Dia: "/>
                         <p:selectOneMenu value="#{cursoMB.curso.dia}">
                             <f:selectItems value="#{diaMB.dia}"/>

@@ -28,6 +28,14 @@
                         <p:inputText value="#{alumnoMB.alumno.apellido}"/>
                         <p:outputLabel value="DNI: "/>
                         <p:inputNumber value="#{alumnoMB.alumno.DNI}" />
+                        <p:outputLabel value="CURSO: "/>
+                        <p:selectOneMenu value="#{alumnoMB.alumno.curso}">
+                            <f:selectItems value="#{cursoMB.all}" var="c" itemLabel="#{c.titulo}" itemValue="#{c.titulo}"/>
+                            <f:facet name="footer">
+                                <p:divider styleClass="p-mt-0" />
+                                <h:outputText value="Seleccione el profesor" style="font-weight:bold;"/>
+                            </f:facet>
+                        </p:selectOneMenu>
                         <p:commandButton value="Guardar" action="#{alumnoMB.save()}" ajax="false"/>
                         <p:growl id="nube" showDetail="true" />
                     </p:panelGrid>
@@ -57,6 +65,11 @@
                             <p:column headerText="DNI">
                                 <h:outputText value="#{ar.DNI}" />
                             </p:column>
+                            
+                            <p:column headerText="CURSO">
+                                <h:outputText value="#{ar.curso}" />
+                            </p:column>
+
 
                             <p:column>
                                 <h:commandButton action = "#{alumnoMB.remove(ar.id)}" value="Borrar" class="btn btn-danger" /> 

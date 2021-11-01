@@ -4,26 +4,35 @@ public class Alumno {
     private String nombre;
     private String apellido;
     private int dni;
-    
-    private int curso; // Foreign Key
+    private String curso;
     
     public Alumno() {
         
     }
 
-    public Alumno(int id, String nombre, String apellido, int dni) {
+    public Alumno(int id, String nombre, String apellido, int dni, String curso) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
+        this.curso = curso;
     }
 
-    public Alumno(String nombre, String apellido, int dni) {
+    public Alumno(String nombre, String apellido, int dni, String curso) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
+        this.curso = curso;
     }
 
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+    
     public int getId() {
         return id;
     }
